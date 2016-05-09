@@ -38,16 +38,14 @@ public class AdmController {
 		return "/adm/a1000";
 	}
 	
-	
-	
-	/*
 	//@Inject
 	//AdminDAO dao;
-	@RequestMapping(value = "/a1000-", method = RequestMethod.GET)
+	@RequestMapping(value = "/a1000", method = RequestMethod.GET)
 	public String a1000() {
 		return "/adm/a1000";
 	}
-	*/
+	
+	/*
 	@RequestMapping(value = "a1000", method = RequestMethod.GET)
 	public String a1000Index(Locale locale, Model model) throws Exception {
 		
@@ -59,10 +57,11 @@ public class AdmController {
 		model.addAttribute("result", result);
 		return "/adm/a1000";
 	}
+	)/
 	
+//	@Inject
+//	AdmServiceImpl service;
 	/*
-	//@Inject
-	//AdmServiceImp service;
 	@Resource(name="AdmServiceImp")
 	private AdmService AdmService;
 	@RequestMapping(value="/a1000_0.xml", 
@@ -78,10 +77,11 @@ public class AdmController {
 		//return "test";
 		//AdmService.list();
 		
-		return AdmService.getOrclInfo1();
+		return AdmService.list();
 		
-	}	
+	}		
 	*/
+	
 	@RequestMapping(value = "/b1000", method = RequestMethod.GET)
 	public String b1000() {
 		return "/adm/b1000";

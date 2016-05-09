@@ -2,30 +2,26 @@ package kr.co.hecorea.adm.service;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
-import org.springframework.stereotype.Service;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import kr.co.hecorea.adm.dao.AdmDAO;
 import kr.co.hecorea.adm.dto.AdmDTO;
 
-@Service("AdmServiceImp")
 public class AdmServiceImpl implements AdmService {
 
-	/*
-	@Inject
-	private AdmDAO dao;
+	@Autowired
+	private SqlSession sqlSession;
+	
 	@Override
 	public List<AdmDTO> list() throws Exception {
 		// TODO Auto-generated method stub
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		
+		System.out.println("start");
+		System.out.println(dao.getOracleInfo());
+		System.out.println("end");
 		return dao.getOracleInfo();
 	}
-
-	@Override
-	public AdmDTO getOrclInfo1() throws Exception {
-		return dao.getOracleInfo1();
-	}
-	*/
-	
 
 }

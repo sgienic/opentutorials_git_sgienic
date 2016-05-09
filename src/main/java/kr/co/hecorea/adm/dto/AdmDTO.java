@@ -1,5 +1,8 @@
 package kr.co.hecorea.adm.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="movie")
 public class AdmDTO {
 
 	private String orcl;
