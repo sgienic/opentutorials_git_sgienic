@@ -80,17 +80,22 @@ public class XmlSelectDaoImpl extends SqlSessionDaoSupport implements XmlSelectD
 			throw e;
 		} 
 		
-		/*
+		
 		finally {
-			sqlSession.close();
+			
 			
 			try {
 				if(rs != null)	rs.close();
 				if(ps != null)	ps.close();
 				if(con != null)	con.close();
-			} catch(Exception e) { }
+				//sqlSession.close();
+			} catch(Exception e) { 
+				System.out.println("finally ee:");
+				System.out.println( e);
+			}
+			
 		}
-		*/
+		
 		
 		return result;
 	}

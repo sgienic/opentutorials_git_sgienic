@@ -32,7 +32,7 @@ public class MonitorController {
 		
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("param", "1");
-		
+		logger.info(" params : "+ params);
 		MonitorDAO monitorDAO = sqlSession.getMapper(MonitorDAO.class);
 		HashMap<String, String> result = monitorDAO.select_three(params); //로그인 출력
 		

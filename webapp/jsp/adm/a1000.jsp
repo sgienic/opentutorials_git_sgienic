@@ -7,13 +7,32 @@
 //Menu
 menu_id ="a";
 menu_num ="";
-
+ 
 $(document).ready( function() { 
+	Init();
+	InitA1000();
 });	
 
+
 function InitA1000(){
-	
+	// /xml/simpleSelect.do?selectId=kr.co.hecorea.monitor.dao.Monitor.getOracleInfo
+	$.get("/xml/simpleSelect.do", {
+		"selectId":"kr.co.hecorea.monitor.dao.Monitor.getOracleInfo"
+	},
+	function(xml){
+		$(xml).find('record').each(function() {
+			var $data = $(this);
+			var textA = $data.find('ORCL').text()
+			var textB = $data.find('USED').text()
+			var textC = $data.find('TIME').text()
+			$('#textORCL').text(textA);
+			$('#textUSED').text(textB);
+			$('#updateTime').text(textC);
+		})
+	},
+	"xml");	
 }
+
 </script> 
 
 
@@ -26,14 +45,14 @@ function InitA1000(){
 <!-- contents -->
 	<div>
 		<span>최근업데이트</span>
-		<span>0000.00.00 00:00:00</span>
+		<span id="updateTime">0000.00.00 00:00:00</span>
 	</div>
 	<div>
 		<div><h3>오라클 DB 사용공간</h3>
-		<span>00</span>
+		<span id="textORCL">00</span>
 		</div>
 		<div><h3>사용 공간</h3>
-		<span>00</span></div>
+		<span id="textUSED">00</span></div>
 	</div>
 <!-- //contents -->
 </div>

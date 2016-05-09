@@ -10,9 +10,12 @@ function GoResult(xml) {
 	$(xml).find('record').each(function() {
 		var $data = $(this);
 		
-		alert($data.find('A').text());
+		//alert($data.find('A').text());
+		
+		var a=  $data.find('A').text();
+		console.log('aa');
 			
-	});
+	}); 
 }
 
 
@@ -31,9 +34,8 @@ function GoDetail() {
 
 
 $(document).ready(function() {
-	alert(result);
-	//GoDetail();	
-	
+	//alert(result);
+	GoDetail();	
 });
 
 </script>

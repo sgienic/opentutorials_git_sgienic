@@ -31,7 +31,7 @@ public class XmlSelectController {
 		String result = null;
 		HashMap<String, String> resultMap = null;
 		
-		String[] selectId = null;
+		String[] selectId = null; 
 		HashMap<String, String> paramMap = null;
 
 		try {
