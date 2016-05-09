@@ -9,11 +9,5 @@
 	 sysdate time
 	 from dual 
 	</select>
-    <select id="getOracleInfo1" resultType="kr.co.hecorea.adm.dto.AdmDTO" >
-	select
-	 (select RTRIM(TO_CHAR(  sum(bytes)/1024/1024/1024 , 'FM999990D99'), '.') GB from dba_data_files) orcl,
-	 (select RTRIM(TO_CHAR(   sum(bytes)/1024/1024/1024, 'FM999990D99'), '.') GB from dba_segments) used,
-	 sysdate time
-	 from dual 
-	</select>
+
 </mapper>

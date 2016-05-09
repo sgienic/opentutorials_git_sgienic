@@ -11,6 +11,8 @@ import kr.co.hecorea.adm.dto.AdmDTO;
 
 @Service("AdmServiceImp")
 public class AdmServiceImpl implements AdmService {
+
+	/*
 	@Inject
 	private AdmDAO dao;
 	@Override
@@ -23,7 +25,7 @@ public class AdmServiceImpl implements AdmService {
 	public AdmDTO getOrclInfo1() throws Exception {
 		return dao.getOracleInfo1();
 	}
-	
+	*/
 	
 
 }

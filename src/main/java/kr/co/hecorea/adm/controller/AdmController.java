@@ -40,14 +40,14 @@ public class AdmController {
 	
 	
 	
-	
+	/*
 	//@Inject
 	//AdminDAO dao;
 	@RequestMapping(value = "/a1000-", method = RequestMethod.GET)
 	public String a1000() {
 		return "/adm/a1000";
 	}
-	
+	*/
 	@RequestMapping(value = "a1000", method = RequestMethod.GET)
 	public String a1000Index(Locale locale, Model model) throws Exception {
 		
@@ -60,7 +60,7 @@ public class AdmController {
 		return "/adm/a1000";
 	}
 	
-	
+	/*
 	//@Inject
 	//AdmServiceImp service;
 	@Resource(name="AdmServiceImp")
@@ -81,7 +81,7 @@ public class AdmController {
 		return AdmService.getOrclInfo1();
 		
 	}	
-	
+	*/
 	@RequestMapping(value = "/b1000", method = RequestMethod.GET)
 	public String b1000() {
 		return "/adm/b1000";
