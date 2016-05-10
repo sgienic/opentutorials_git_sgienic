@@ -62,28 +62,6 @@ public class AdmController {
 		return "/adm/a1000";
 	}
 	)/
-	
-//	@Inject
-//	AdmServiceImpl service;
-	/*
-	@Resource(name="AdmServiceImp")
-	private AdmService AdmService;
-	@RequestMapping(value="/a1000_0.xml", 
-			method = RequestMethod.GET ,
-			headers="Accept=application/xml",
-			produces = {MediaType.APPLICATION_XML_VALUE})
-	public @ResponseBody AdmDTO listXML1()throws Exception{
-		
-		logger.info("list xml..............");
-		
-		
-		//return service.list().get(0);
-		//return "test";
-		//AdmService.list();
-		
-		return AdmService.list();
-		
-	}		
 	*/
 	
 	@RequestMapping(value = "/b1000", method = RequestMethod.GET)
@@ -103,11 +81,15 @@ public class AdmController {
 		return "/adm/d1000";
 	}
 	@RequestMapping(value = "/d1001", method = RequestMethod.GET)
-	public String d1001() {
+	public String d1001(String tableName,String userName) {
+		//http://localhost:8080/swg/adm/d1002?tableName=aaaa&userName=aaa
+		
+		System.out.println(" tableName : " + tableName);
+		System.out.println(" userName : " + userName);
 		return "/adm/d1001";
 	}
 	@RequestMapping(value = "/d1002", method = RequestMethod.GET)
-	public String d1002() {
+	public String d1002(String tableName) {
 		return "/adm/d1002";
 	}
 }
