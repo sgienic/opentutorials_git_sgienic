@@ -6,52 +6,87 @@
 <script>
 menu_id ="b";
 menu_num ="";
+
+
+var jArray = new Array();
 $(document).ready( function() { 
 	Init();
+	InitB1000();
+	
 });	
+
+function InitB1000(){
+	
+	// /xml/simpleSelect.do?selectId=kr.co.hecorea.common.dao.XmlSelectDao.getOracleUser
+	$.get("/xml/simpleSelect.do", {
+		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getOracleUser"
+	},
+	function(xml){
+		$(xml).find('record').each(function() {
+			var $data = $(this);
+			
+
+			var jobj = new Object();
+
+			jobj.ROWNUM = $data.find('ROWNUM').text();
+			jobj.USERNAME = $data.find('USERNAME').text();
+			jobj.USER_ID = $data.find('USER_ID').text();
+			jobj.ACCOUNT_STATUS = $data.find('ACCOUNT_STATUS').text();
+			jobj.DEFAULT_TABLESPACE = $data.find('DEFAULT_TABLESPACE').text();
+			jobj.CREATED = $data.find('CREATED').text();
+	        jArray .push(jobj );
+			createTemp(jArray);
+		})
+	}
+	,
+	"xml");	
+	
+}
+
+function createTemp(jArray){
+	console.log("data : " + JSON.stringify(jArray));
+	$( "#userList" ).html(
+			$( "#userTemplate" ).render( jArray )
+		);	
+}
 </script> 
 
-
-
-<!-- SNB -->
-<jsp:include page="/jsp/include/subMenuA.jsp" />
-<!-- //SNB -->
-
-<div id="contents">
-<!-- contents -->
-	내용..
-
-
-<ul id="movieList"></ul>
-
-<!--=================== Demo Section ===================-->
-
-<script id="movieTemplate" type="text/x-jsrender">
+<script id="userTemplate" type="text/x-jsrender">
+<tr>
+	<td>{{>ROWNUM}}</td>
+	<td>{{>USERNAME}}</td>
+	<td>{{>USER_ID}}</td>
+	<td>{{>ACCOUNT_STATUS}}</td>
+	<td>{{>DEFAULT_TABLESPACE}}</td>
+	<td>{{>CREATED}}</td>
+</tr>
 	<div>
 		{{:#index+1}}: <b>{{>name}}</b> ({{>releaseYear}})
 	</div>
 </script>
 
-<div id="movieList"></div>
+<!-- SNB -->
+<jsp:include page="/jsp/include/subMenuB.jsp" />
+<!-- //SNB -->
 
-<script type="text/javascript">
-
-	var movies = [
-		{ name: "The Red Violin", releaseYear: "1998" },
-		{ name: "Eyes Wide Shut", releaseYear: "1999" },
-		{ name: "The Inheritance", releaseYear: "197116" }
-	];
-
-	// Render the template with the movies data and insert
-	// the rendered HTML under the "movieList" element
-	$( "#movieList" ).html(
-		$( "#movieTemplate" ).render( movies )
-	);
-
-</script>
-
-<!--================ End of Demo Section ================-->
-
+<div id="contents">
+<!-- contents -->
+	<h2>사용자정보</h2>
+	
+	
+	<table>
+	<thead>
+	  <tr>
+	  	<th>No.</th>
+	  	<th>UserName</th>
+	  	<th>USER_ID</th>
+	  	<th>ACCOUNT_STATUS</th>
+	  	<th>DEFAULT_TABLESPACE</th>
+	  	<th>CREATED</th>
+	  </tr>
+	</thead>
+	<tbody id="userList"></tbody>
+	</table>
 
 	
 <!-- //contents -->

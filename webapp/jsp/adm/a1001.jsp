@@ -6,7 +6,7 @@
 <script>
 //Menu
 menu_id ="a";
-menu_num ="1";
+menu_num ="2";
  
 $(document).ready( function() { 
 	Init();

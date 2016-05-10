@@ -62,7 +62,7 @@ public class XmlSelectDaoImpl extends SqlSessionDaoSupport implements XmlSelectD
 			con = bds.getConnection();
 
 			String sql = sqlSession.getConfiguration().getMappedStatement(selectId).getSqlSource().getBoundSql(paramMap).getSql();
-			log.info("XmlSelect SQL: " + sql);
+			log.info("XmlSelect SQL: " + "\n \t\t  " + sql);
 			
 			List<ParameterMapping> list = sqlSession.getConfiguration().getMappedStatement(selectId).getSqlSource().getBoundSql(paramMap).getParameterMappings();
 			

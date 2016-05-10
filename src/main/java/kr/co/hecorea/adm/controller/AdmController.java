@@ -44,6 +44,10 @@ public class AdmController {
 	public String a1000() {
 		return "/adm/a1000";
 	}
+	@RequestMapping(value = "/a1001", method = RequestMethod.GET)
+	public String a1001() {
+		return "/adm/a1001";
+	}
 	
 	/*
 	@RequestMapping(value = "a1000", method = RequestMethod.GET)
@@ -90,8 +94,20 @@ public class AdmController {
 	public String c1000() {
 		return "/adm/c1000";
 	}
+	@RequestMapping(value = "/c1001", method = RequestMethod.GET)
+	public String c1001() {
+		return "/adm/c1001";
+	}
 	@RequestMapping(value = "/d1000", method = RequestMethod.GET)
 	public String d1000() {
 		return "/adm/d1000";
+	}
+	@RequestMapping(value = "/d1001", method = RequestMethod.GET)
+	public String d1001() {
+		return "/adm/d1001";
+	}
+	@RequestMapping(value = "/d1002", method = RequestMethod.GET)
+	public String d1002() {
+		return "/adm/d1002";
 	}
 }

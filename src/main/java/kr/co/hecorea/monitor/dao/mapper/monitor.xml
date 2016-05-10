@@ -7,12 +7,7 @@
 		SELECT '22222' as a from dual
 	</select>
 
-    <select id="getOracleInfo" resultType="hashmap" parameterType="string">
-		select
-		 (select RTRIM(TO_CHAR(  sum(bytes)/1024/1024/1024 , 'FM999990D99'), '.') GB from dba_data_files) AS orcl,
-		 (select RTRIM(TO_CHAR(   sum(bytes)/1024/1024/1024, 'FM999990D99'), '.') GB from dba_segments) AS used,
-		 sysdate time
-		 from dual 
-	</select>
+
+
 	
 </mapper>

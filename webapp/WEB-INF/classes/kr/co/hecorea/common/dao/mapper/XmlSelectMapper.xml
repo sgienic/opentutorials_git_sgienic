@@ -2,17 +2,90 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.hecorea.common.dao.XmlSelectDao">
-    
-    <select id="selectBasinDomainList" resultType="hashmap" parameterType="string">
-        select domain_code, domain_name, group_code, display_order
-          from t_hmis_basin_domain_inf
-	</select>
-    <select id="getOracleInfo" resultType="hashmap" parameterType="string">
-		select
-		 (select RTRIM(TO_CHAR(  sum(bytes)/1024/1024/1024 , 'FM999990D99'), '.') GB from dba_data_files) orcl,
-		 (select RTRIM(TO_CHAR(   sum(bytes)/1024/1024/1024, 'FM999990D99'), '.') GB from dba_segments) used,
-		 sysdate time
-		 from dual  
-	</select>
-	 
+
+<select id="select_three" parameterType="hashmap" resultType="hashmap">
+	SELECT 774 AS BB from dual where 1=#{param}
+</select>
+   <select id="getOracleInfo" resultType="hashmap" >
+	select
+	 (select RTRIM(TO_CHAR(  sum(bytes)/1024/1024/1024 , 'FM999990D99'), '.') GB from dba_data_files) AS orcl,
+	 (select RTRIM(TO_CHAR(   sum(bytes)/1024/1024/1024, 'FM999990D99'), '.') GB from dba_segments) AS used,
+	 sysdate time
+	 from dual 
+</select>	
+<select id="getOracleUser" resultType="hashmap" >
+	SELECT ROWNUM,
+	         username,
+	         user_id,
+	         account_status,
+	         default_tablespace,
+	         created
+	    FROM dba_users
+	   WHERE 1 = 1 
+	     AND user_id > 90 
+	     and to_char(created,'yyyymmdd') > 20140101
+	ORDER BY created	
+</select>
+<select id="getDataFile" resultType="hashmap" >	
+  SELECT b.file_name "FILE_NAME",
+         b.tablespace_name "TABLESAPCE_ANME",
+          RTRIM(TO_CHAR(b.bytes / 1024 / 1024 , 'FM999990D99'), '.')"TOTAL",
+          RTRIM(TO_CHAR(( (b.bytes - SUM (NVL (a.bytes, 0)))) / 1024 / 1024 , 'FM999990D99'), '.')"USED",
+          RTRIM(TO_CHAR((SUM (NVL (a.bytes, 0))) / 1024 / 1204 , 'FM999990D99'), '.')"FREE",
+          RTRIM(TO_CHAR((SUM (NVL (a.bytes, 0)) / (b.bytes)) * 100 , 'FM999990D99'), '.')"FREE_PER"
+    FROM dba_free_space a, dba_data_files b
+   WHERE a.file_id(+) = b.file_id
+     and b.tablespace_name in (SELECT   default_tablespace
+    FROM dba_users
+   WHERE 1 = 1 
+     AND user_id > 90 
+     )
+GROUP BY b.tablespace_name, b.file_name, b.bytes
+ORDER BY b.tablespace_name	
+</select>
+<select id="getTableInfoByUser" parameterType="hashmap" resultType="hashmap" >	
+ SELECT ROWNUM,T1.owner,
+         T1.TABLE_NAME,
+         T2.COMMENTS,
+         T1.TABLESPACE_NAME,
+         T1.NUM_ROWS,
+         T1.AVG_ROW_LEN,
+         RTRIM (TO_CHAR (T1.INITIAL_EXTENT / 1024 / 1204, 'FM999990D99'), '.')
+            AS MB,
+            T1.LAST_ANALYZED
+    FROM dba_TABLES T1 , dba_TAB_COMMENTS T2
+   WHERE 1=1
+   and  T1.TABLE_NAME = T2.TABLE_NAME 
+   and  T1.OWNER = T2.OWNER 
+   and T1.owner IN
+            (SELECT username
+               FROM dba_users
+              WHERE     1 = 1
+                    AND user_id > 90
+                    and username = #{username}
+                    )
+ORDER BY T1.TABLE_NAME
+</select>
+<select id="getTableInfoByUserNoComment" parameterType="hashmap" resultType="hashmap" >	
+SELECT owner,TABLE_NAME, TABLESPACE_NAME, NUM_ROWS, AVG_ROW_LEN, 
+RTRIM(TO_CHAR (INITIAL_EXTENT/ 1024 / 1204 , 'FM999990D99'), '.') AS MB ,
+T1.LAST_ANALYZED
+FROM dba_TABLES t1
+where owner in (SELECT username
+    FROM dba_users
+   WHERE 1 = 1 
+     AND user_id > 90 
+     AND default_tablespace NOT IN ('USERS'))
+   and T1.owner IN
+            (SELECT username
+               FROM dba_users
+              WHERE     1 = 1
+                    AND user_id > 90
+                    and username = #{username}
+                    )     
+order by owner
+</select>
+
+
+
 </mapper>

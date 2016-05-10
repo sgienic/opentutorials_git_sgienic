@@ -2,15 +2,17 @@
  * admin 
  */
 
+//menu
 var menu_id ,menu_num ;
 function InitMenu(){
     if (menu_id) {
         $('li[id='+menu_id+'] a').addClass('on');
         if(menu_num){
-        	$('#snb').hide();
+        	$('#snb').show();
+            $('li[id=sub_'+menu_num+']').addClass('on');
         }else{
         	$('#snb').hide();
-        }        
+        }
     }   
 }
 

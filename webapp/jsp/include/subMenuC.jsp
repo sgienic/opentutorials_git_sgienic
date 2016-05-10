@@ -4,10 +4,10 @@
     <div id="snb">
 	<!-- snb -->
 	
-		<h2><span id="subMunuName">오라클정보</span></h2>
+		<h2><span id="subMunuName"></span></h2>
 		<ul>
-			<li id="sub_1"><a href="a1000">DashBoard</a></li>
-			<li id="sub_2"><a href="a1001">OracleInfo</a></li>
+			<li id="sub_1"><a href="c1000">DataFile</a></li>
+			<li id="sub_2"><a href="c1001">TableSpace</a></li>
 		</ul>
 	<!-- //snb -->
 	</div>
