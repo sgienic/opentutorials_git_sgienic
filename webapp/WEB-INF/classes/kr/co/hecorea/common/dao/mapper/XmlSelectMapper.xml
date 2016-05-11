@@ -44,7 +44,7 @@ GROUP BY b.tablespace_name, b.file_name, b.bytes
 ORDER BY b.tablespace_name	
 </select>
 <select id="getTableInfoByUser" parameterType="hashmap" resultType="hashmap" >	
- SELECT ROWNUM,T1.owner,
+ SELECT ROWNUM,T1.OWNER,
          T1.TABLE_NAME,
          T2.COMMENTS,
          T1.TABLESPACE_NAME,
@@ -67,7 +67,7 @@ ORDER BY b.tablespace_name
 ORDER BY T1.TABLE_NAME
 </select>
 <select id="getTableInfoByUserNoComment" parameterType="hashmap" resultType="hashmap" >	
-SELECT owner,TABLE_NAME, TABLESPACE_NAME, NUM_ROWS, AVG_ROW_LEN, 
+SELECT OWNER,TABLE_NAME, TABLESPACE_NAME, NUM_ROWS, AVG_ROW_LEN, 
 RTRIM(TO_CHAR (INITIAL_EXTENT/ 1024 / 1204 , 'FM999990D99'), '.') AS MB ,
 T1.LAST_ANALYZED
 FROM dba_TABLES t1

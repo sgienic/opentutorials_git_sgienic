@@ -69,9 +69,9 @@ function createTemp(jArray){
 <jsp:include page="/jsp/include/subMenuB.jsp" />
 <!-- //SNB -->
 
-<div id="contents">
+<div id="contents" class="noSnb">
 <!-- contents -->
-	<h2>사용자정보</h2>
+	<h3>사용자정보</h3>
 	
 	
 	<table>

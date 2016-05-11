@@ -8,7 +8,10 @@ import java.util.List;
 import kr.co.hecorea.adm.dto.AdmDTO;
 //@Repository 
 public interface AdmDAO {
-	public HashMap<String, String> getOracleSize() throws Exception;
+	
+	public List<HashMap<String, String>> getTableInfo(HashMap<String, String> params) throws Exception;
+	public HashMap<String, String> getTableInfoByUserTable(HashMap<String, String> params) throws Exception;
+	
 	public List<AdmDTO> getOracleInfo() throws Exception;
 	public AdmDTO getOracleInfo1() throws Exception;
 }

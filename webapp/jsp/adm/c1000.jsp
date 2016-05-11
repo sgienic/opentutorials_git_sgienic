@@ -65,7 +65,7 @@ function createTemp(jArray){
 
 <div id="contents">
 <!-- contents -->
-	<h2>DataFile</h2>
+	<h3>DataFile</h3>
 	
 	<table>
 	<thead>

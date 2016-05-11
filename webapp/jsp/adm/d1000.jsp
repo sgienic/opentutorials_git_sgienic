@@ -54,6 +54,7 @@ function CreateTableInfo(username){
 	callbackTableInfo
 	,
 	"xml");		
+	$('#tableNameLabel').text(username);
 }
 function callbackTableInfo(xml){
 	var xmlIndex;
@@ -61,6 +62,7 @@ function callbackTableInfo(xml){
 		var $data = $(this);
 
 		var jobj = new Object();
+		jobj.OWNER = $data.find('OWNER').text();
 		jobj.TABLE_NAME = $data.find('TABLE_NAME').text();
 		jobj.COMMENTS = $data.find('COMMENTS').text();
 		jobj.NUM_ROWS = $data.find('NUM_ROWS').text();
@@ -74,9 +76,9 @@ function callbackTableInfo(xml){
 	
 	xmlIndex = xmlIndex + 1;
 	if(xmlIndex>1){
-		$('#tableInfoMsg').html("Table Count" + xmlIndex);
+		$('#tableInfoMsg').html("Table Count : " + xmlIndex);
 	}else{
-		$('#tableInfoMsg').html("등록된 테이블 이 없습니다.");
+		$('#tableInfoMsg').html("생성된 테이블 이 없습니다.");
 	}
 	
 	createTempTableInfo(jArray1);
@@ -88,6 +90,14 @@ function createTempTableInfo(jArray){
 			$( "#tableInfoByUsernameTemplate" ).render( jArray )
 		);	
 }
+
+
+function goTableInfo(userName,tableName){
+	frmTableInfo.action ="d1001";
+	frmTableInfo.userName.value= userName;
+	frmTableInfo.tableName.value= tableName;
+	frmTableInfo.submit();
+}
 </script> 
 
 <script id="userTemplate" type="text/x-jsrender">
@@ -95,11 +105,11 @@ function createTempTableInfo(jArray){
 </script>
 
 <script id="tableInfoByUsernameTemplate" type="text/x-jsrender">
-<tr>
-	<td>{{>TABLE_NAME}}</td>
-	<td>{{>COMMENTS}}</td>
-	<td>{{>NUM_ROWS}}</td>
-	<td>{{>MB}}</td>
+<tr onclick="goTableInfo('{{>OWNER}}','{{>TABLE_NAME}}')" >
+	<td class="align_l">{{>TABLE_NAME}}</td>
+	<td class="align_l">{{>COMMENTS}}</td>
+	<td class="align_r">{{>NUM_ROWS}}</td>
+	<td class="align_r">{{>MB}}</td>
 	<td>{{>LAST_ANALYZED}}</td>
 </tr>
 </script>
@@ -110,18 +120,24 @@ function createTempTableInfo(jArray){
 
 <div id="contents">
 <!-- contents -->
-	<h2>사용자 . </h2>
-	<div id="userList"></div>
+	<h3>사용자 </h3>
+	<div id="userList" class="userList"></div>
 	
 	<hr>
 	
 	<div id="tableInfoDiv">
+		<span id="tableNameLabel"></span>
 		<table>
+		<col width="*" />
+		<col width="*" />
+		<col width="70" />
+		<col width="70" />
+		<col width="120" />
 		<thead>
 		  <tr>
 		  	<th>TABLE_NAME</th>
 		  	<th>COMMENTS</th>
-		  	<th>NUM_ROWS</th>
+		  	<th>ROWS</th>
 		  	<th>MB</th>
 		  	<th>LAST_ANALYZED</th>
 		  </tr>
@@ -132,7 +148,12 @@ function createTempTableInfo(jArray){
 	</div>
 	
 <!-- //contents -->
+
 </div>
 
 
 <jsp:include page="/jsp/include/bottom.jsp" />
+<form name="frmTableInfo" method="post">
+	<input type="hidden" name="userName" id="userName">
+	<input type="hidden" name="tableName" id="tableName">
+</form>

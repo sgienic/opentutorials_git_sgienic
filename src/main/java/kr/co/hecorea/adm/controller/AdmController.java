@@ -1,6 +1,7 @@
 package kr.co.hecorea.adm.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.hecorea.adm.dao.AdmDAO;
 import kr.co.hecorea.adm.dto.AdmDTO;
@@ -83,10 +85,42 @@ public class AdmController {
 	@RequestMapping(value = "/d1001", method = RequestMethod.GET)
 	public String d1001(String tableName,String userName) {
 		//http://localhost:8080/swg/adm/d1002?tableName=aaaa&userName=aaa
-		
 		System.out.println(" tableName : " + tableName);
 		System.out.println(" userName : " + userName);
 		return "/adm/d1001";
+	}
+	@RequestMapping(value = "/d1001", method = RequestMethod.POST)
+	public ModelAndView d1001byPost(String tableName,String userName) throws Exception {
+		ModelAndView mv = new ModelAndView("/adm/d1001");
+		
+		//http://localhost:8080/swg/adm/d1002?tableName=aaaa&userName=aaa
+		System.out.println(" tableName : " + tableName);
+		System.out.println(" userName : " + userName);
+		
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("tableName", tableName);
+		params.put("userName", userName);
+		
+		//table 관련정보
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		
+
+		List resultList = dao.getTableInfo(params);
+		HashMap tbInfo = dao.getTableInfoByUserTable(params);
+		
+		
+
+
+		
+		mv.addObject("resultList", resultList);
+		mv.addObject("tableName", tableName);
+		mv.addObject("userName", userName);
+		mv.addObject("comments", tbInfo.get("COMMENTS"));
+		mv.addObject("num_rows", tbInfo.get("NUM_ROWS"));
+		mv.addObject("mb", tbInfo.get("MB"));
+		
+		
+		return mv;
 	}
 	@RequestMapping(value = "/d1002", method = RequestMethod.GET)
 	public String d1002(String tableName) {
