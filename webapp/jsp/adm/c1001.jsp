@@ -25,7 +25,7 @@ $(document).ready( function() {
 </div>
 
 
-
+리체의 수정
 
 <jsp:include page="/jsp/include/bottom.jsp" />
 
