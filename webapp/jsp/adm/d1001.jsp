@@ -32,6 +32,8 @@ $(document).ready( function() {
 	num_rows : <c:out value="${num_rows }"></c:out> | 
 	MB : <c:out value="${mb }"></c:out>Mb   
 	
+	새로운코딩
+	
 	<table>
 	<thead>
 	  <tr>
