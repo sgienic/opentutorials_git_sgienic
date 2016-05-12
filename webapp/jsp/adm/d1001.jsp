@@ -30,8 +30,7 @@ $(document).ready( function() {
 	사용자명 : <c:out value="${userName }"></c:out> | 
 	TableName : <c:out value="${tableName }"></c:out>  <c:out value="${comments }"></c:out> | 
 	num_rows : <c:out value="${num_rows }"></c:out> | 
-	MB : <c:out value="${mb }"></c:out>Mb 
-	
+	MB : <c:out value="${mb }"></c:out>Mb   
 	
 	<table>
 	<thead>
