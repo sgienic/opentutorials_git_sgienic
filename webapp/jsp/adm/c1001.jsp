@@ -8,8 +8,8 @@ menu_id ="c";
 menu_num ="2";
 $(document).ready( function() { 
 	Init();
-});	
-</script> 
+});	  
+</script>  
 
 
 
