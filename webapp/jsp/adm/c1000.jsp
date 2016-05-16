@@ -14,7 +14,8 @@ $(document).ready( function() {
 });	
 
 function InitC1000(){
-	
+
+	$('#contents').spin();
 	// /xml/simpleSelect.do?selectId=kr.co.hecorea.common.dao.XmlSelectDao.getOracleUser
 	$.get("/xml/simpleSelect.do", {
 		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getDataFile"
@@ -38,6 +39,8 @@ function InitC1000(){
 	}
 	,
 	"xml");		
+
+	$('#contents').spin(false);
 }
 
 function createTemp(jArray){

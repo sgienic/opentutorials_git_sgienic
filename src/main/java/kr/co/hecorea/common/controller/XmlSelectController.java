@@ -43,13 +43,20 @@ public class XmlSelectController {
 			
 			Enumeration<String> paramEnum = req.getParameterNames();
 			
+			
+			
 			for (; paramEnum.hasMoreElements();) {
 				String parameterName = (String) paramEnum.nextElement();
 				String parameterValue = req.getParameter(parameterName);
+				
+
+				System.out.println ("param : " + parameterName + "/" + parameterValue);
 
 				if (!parameterName.equals("selectId")) {
 					paramMap.put(parameterName, parameterValue);
 				}
+				
+
 			}
 			
 			result = xmlSelectService.commonSelect(selectId, paramMap);
@@ -62,6 +69,8 @@ public class XmlSelectController {
 			resultMap.put("ErrorCode", "-1");
 			resultMap.put("ErrorMsg", e.toString());
 		}
+		
+		System.out.println("result : " + result);
 		
 		AjaxUtil.callXmlAjax(res, resultMap, result, "utf-8", "utf-8");
 		

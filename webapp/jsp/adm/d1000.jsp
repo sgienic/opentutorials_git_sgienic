@@ -15,12 +15,16 @@ $(document).ready( function() {
 
 var jArray = new Array();
 function InitD1000_1(){
+
+	$('#tableInfoDiv').spin();
 	// 사용자 정보 select
 	$.get("/xml/simpleSelect.do", {
 		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getOracleUser"
 	},
 	callback
 	);	
+
+	$('#tableInfoDiv').spin(false);
 }
 function callback(xml){
 	$(xml).find('record').each(function(index) {

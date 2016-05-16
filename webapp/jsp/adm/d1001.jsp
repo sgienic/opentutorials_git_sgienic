@@ -10,10 +10,88 @@
 <script>
 menu_id ="d";
 menu_num ="2";
-$(document).ready( function() { 
+
+
+var username ;
+var tableName ;
+$(document).ready( function() {
+	username ='${userName }';
+	tableName =  '${tableName }';
+
 	Init();
+	InitD1001();
+	
+	if(username){
+		selUserChange(username);
+	}
 });	
+
+
+//사용자 정보 select box option 추가
+function InitD1001(){
+	// 사용자 정보 select
+	$.get("/xml/simpleSelect.do", {
+		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getOracleUser"
+	},
+	callback
+	);
+}
+function callback(xml){
+	
+	var optVal ;
+	$(xml).find('record').each(function(index) {
+		var $data = $(this);
+		var opt = new Option();
+		
+		opt.value = $data.find('USERNAME').text();
+		opt.text  = $data.find('USERNAME').text();
+		optVal =  $data.find('USERNAME').text();
+		$('#selUser').append(opt);
+		
+	})
+	
+	$("#selUser").val(username).attr("selected", "selected");
+	
+}
+
+
+function selUserChange(userName){
+	
+	// 사용자 정보 select
+	$.get("/xml/simpleSelect.do", {
+		"username":userName,
+		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getTableInfoByUser"
+	},
+	callbackSelUsergetList
+	);	
+}
+
+function callbackSelUsergetList(xml){
+	
+	 $("#selTable").find("option").remove();
+	$(xml).find('record').each(function(index) {
+		var $data = $(this);
+		var opt = new Option();
+		opt.value = $data.find('TABLE_NAME').text();
+		opt.text  = $data.find('TABLE_NAME').text();
+		$('#selTable').append(opt);
+	})
+	$("#selTable").val(tableName).attr("selected", "selected");
+	
+}
+
+
+function goTableInfo(userName,tableName){
+	frmTableInfo.action ="d1001";
+	frmTableInfo.userName.value= $("#selUser option:selected").val();
+	frmTableInfo.tableName.value= $("#selTable option:selected").val();
+	frmTableInfo.submit();
+}
 </script> 
+
+
+
+
 
 <!-- SNB -->
 <jsp:include page="/jsp/include/subMenuD.jsp" />
@@ -21,6 +99,20 @@ $(document).ready( function() {
 
 <div id="contents">
 <!-- contents -->
+
+<div id="searchDiv">
+<form >
+	선택된 사용자  4 
+    <select id ="selUser" name="selUser" onchange="selUserChange(this.value)">
+    	<option>..선택하세요..</option>
+    </select>
+
+	선택된 table :
+    <select id ="selTable" name="selTable" onchange ="goTableInfo()">
+    	<option>..선택하세요..</option>
+    </select>
+</form>	
+</div>
 
 
 	사용자 선택
@@ -31,8 +123,6 @@ $(document).ready( function() {
 	TableName : <c:out value="${tableName }"></c:out>  <c:out value="${comments }"></c:out> | 
 	num_rows : <c:out value="${num_rows }"></c:out> | 
 	MB : <c:out value="${mb }"></c:out>Mb   
-	
-	새로운코딩
 	
 	<table>
 	<thead>
@@ -64,7 +154,10 @@ $(document).ready( function() {
 </div>
 
 
-
+<form name="frmTableInfo" method="post">
+	<input type="hidden" name="userName" id="userName">
+	<input type="hidden" name="tableName" id="tableName">
+</form>
 
 <jsp:include page="/jsp/include/bottom.jsp" />
 

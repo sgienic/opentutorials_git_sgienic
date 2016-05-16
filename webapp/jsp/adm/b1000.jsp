@@ -44,7 +44,6 @@ function InitB1000(){
 }
 
 function createTemp(jArray){
-	console.log("data : " + JSON.stringify(jArray));
 	$( "#userList" ).html(
 			$( "#userTemplate" ).render( jArray )
 		);	
