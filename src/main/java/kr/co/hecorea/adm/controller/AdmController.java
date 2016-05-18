@@ -93,10 +93,6 @@ public class AdmController {
 	public ModelAndView d1001byPost(String tableName,String userName) throws Exception {
 		ModelAndView mv = new ModelAndView("/adm/d1001");
 		
-		//http://localhost:8080/swg/adm/d1002?tableName=aaaa&userName=aaa
-		System.out.println(" tableName : " + tableName);
-		System.out.println(" userName : " + userName);
-		
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("tableName", tableName);
 		params.put("userName", userName);
@@ -107,10 +103,6 @@ public class AdmController {
 
 		List resultList = dao.getTableInfo(params);
 		HashMap tbInfo = dao.getTableInfoByUserTable(params);
-		
-		
-
-
 		
 		mv.addObject("resultList", resultList);
 		mv.addObject("tableName", tableName);
@@ -125,5 +117,41 @@ public class AdmController {
 	@RequestMapping(value = "/d1002", method = RequestMethod.GET)
 	public String d1002(String tableName) {
 		return "/adm/d1002";
+	}
+	@RequestMapping(value = "/d1002", method = RequestMethod.POST)
+	public ModelAndView d1002byPost(String tableName,String userName,String rowNum) {
+		ModelAndView mv = new ModelAndView("/adm/d1002");
+		mv.addObject("tableName", tableName);
+		mv.addObject("userName", userName);
+		mv.addObject("rowNum", rowNum);
+		return mv;
+	}
+	
+	
+
+	@RequestMapping(value = "/d1002Sub", method = RequestMethod.GET)
+	public ModelAndView d1002SubbyGet(String tableName,String userName,String rowNum) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		
+		System.out.println(" params  : " + params);
+		
+		ModelAndView mv = new ModelAndView("/adm/d1002Sub");
+		mv.addObject("tableName", tableName);
+		mv.addObject("userName", userName);
+		mv.addObject("rowNum", rowNum);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/d1002Sub", method = RequestMethod.POST)
+	public ModelAndView d1002SubbyPost(String tableName,String userName,String rowNum) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		
+		System.out.println(" params  : " + params);
+		
+		ModelAndView mv = new ModelAndView("/adm/d1002Sub");
+		mv.addObject("tableName", tableName);
+		mv.addObject("userName", userName);
+		mv.addObject("rowNum", rowNum);
+		return mv;
 	}
 }

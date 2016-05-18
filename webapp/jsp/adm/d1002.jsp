@@ -6,9 +6,36 @@
 <script>
 menu_id ="d";
 menu_num ="3";
+
+var username ;
+var tableName ;
+var rowNum ;
+
 $(document).ready( function() { 
+	username ='${userName }';
+	tableName =  '${tableName }';
+	tableName =  '${rowNum }';	
+	
+	
+	if(!username){
+		alert("선택된 table 이 없습니다.");
+		location("d1001");
+	}
 	Init();
+	InitD1002Sub();
 });	
+
+//select * from table 값을불러옵니다.;
+function InitD1002Sub(){
+    $.post("d1002Sub", {
+    	"username" : "${userName }",
+    	"tableName" : "${tableName }",
+    	"rowNum" : "${rowNum }"
+    	},
+    	function(data) {
+        $('#tableData').html(data);
+    });
+}
 </script> 
 
 
@@ -19,7 +46,12 @@ $(document).ready( function() {
 
 <div id="contents">
 <!-- contents -->
-	내용..aa
+	선택한 table 의 data 를 출력하여 보여줍니다. 기본값 50 건..1
+	<br>
+	${userName }
+	<div id="tableData">
+	</div>
+	
 <!-- //contents -->
 </div>
 

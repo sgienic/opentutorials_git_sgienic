@@ -57,7 +57,7 @@ function InitA1000(){
 		<div><h3>오라클 DB 사용공간</h3>
 		<span id="textORCL">00</span>
 		</div>
-		<div><h3>사용 공간 s22s11</h3> 
+		<div><h3>사용 공간 </h3> 
 		<span id="textUSED">00</span></div>
 	</div>
 <!-- //contents -->

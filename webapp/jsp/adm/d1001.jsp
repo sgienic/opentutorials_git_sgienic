@@ -87,6 +87,31 @@ function goTableInfo(userName,tableName){
 	frmTableInfo.tableName.value= $("#selTable option:selected").val();
 	frmTableInfo.submit();
 }
+
+
+function goTableData(userName,tableName){
+	frmTableInfo.action ="d1002";
+	frmTableInfo.userName.value= userName;
+	frmTableInfo.tableName.value= tableName;
+	frmTableInfo.submit();
+}
+
+
+
+
+
+
+//select * from table 값을불러옵니다.;
+function InitD1002Sub(){
+    $.post("d1002Sub", {
+    	"username" : "${userName }",
+    	"tableName" : "${tableName }",
+    	"rowNum" : "${rowNum }"
+    	},
+    	function(data) {
+        $('#divTabInfo').html(data);
+    });
+}
 </script> 
 
 
@@ -119,11 +144,15 @@ function goTableInfo(userName,tableName){
 	table 선택
 	<div id = "divTabInfo">
 	<span><h2>TableInfo ShowData</h2></span>
-	사용자명 : <c:out value="${userName }"></c:out> | 
+	사용자명 : <c:out value="${userName }"></c:out> | <br/>
 	TableName : <c:out value="${tableName }"></c:out>  <c:out value="${comments }"></c:out> | 
 	num_rows : <c:out value="${num_rows }"></c:out> | 
 	MB : <c:out value="${mb }"></c:out>Mb   
 	
+	
+	<a href="javascript:goTableData('${userName }','${tableName }')">tableData 보기 . </a>
+	
+	<a href="javascript:InitD1002Sub('${userName }','${tableName }')">tableData 여기서 보기 . </a>
 	<table>
 	<thead>
 	  <tr>
