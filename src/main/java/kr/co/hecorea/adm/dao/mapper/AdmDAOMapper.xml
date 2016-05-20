@@ -47,4 +47,27 @@
 	   and  T1.OWNER = #{userName}
 	ORDER BY T1.TABLE_NAME
 	</select>
+	
+	
+	<select id="getLoginLog"  resultType="hashmap" >	
+	  SELECT user_id, user_log_date, user_log_ip
+	    FROM SWG_USER_LOG
+	   WHERE 1 = 1 
+	     AND ROWNUM &lt; 10
+	ORDER BY user_log_date DESC	
+	</select>
+	<select id="getOracleSession"  resultType="hashmap" >	
+	  SELECT username,
+	         schemaname,
+	         osuser,
+	         machine,
+	         program,
+	         TYPE,
+	         logon_time,
+	         service_name,sysdate
+	    FROM v$session
+	   WHERE TYPE = 'USER'
+	ORDER BY logon_time DESC
+	</select>
+	
 </mapper>

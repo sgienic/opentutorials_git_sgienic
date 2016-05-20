@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.hecorea.common.dao.UserDAO">
+
+	<select id="select_loginYn" parameterType="hashmap" resultType="hashmap">
+		SELECT  user_id , 
+				aka,
+				user_flag
+		  FROM swg_user
+		 WHERE 1=1
+	   	   AND user_id = #{user_id}
+		   AND user_pass = #{user_pass}
+	</select>
+	<insert id="insert_contact_log" parameterType="hashmap" >
+		INSERT INTO swg_user_log 
+		(
+			user_id, 
+			user_log_date,
+			user_log_ip
+		)
+		VALUES 
+		(
+			#{user_id}, 
+			sysdate,
+			#{user_log_ip_addr}
+		)
+	</insert>	
+</mapper> 

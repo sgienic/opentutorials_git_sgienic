@@ -14,4 +14,10 @@ public interface AdmDAO {
 	
 	public List<AdmDTO> getOracleInfo() throws Exception;
 	public AdmDTO getOracleInfo1() throws Exception;
+
+	//로그인기록
+	public List<HashMap<String,String>> getLoginLog() throws Exception;
+	
+	//오라클 세션정보 
+	public List<HashMap<String,String>> getOracleSession() throws Exception;
 }

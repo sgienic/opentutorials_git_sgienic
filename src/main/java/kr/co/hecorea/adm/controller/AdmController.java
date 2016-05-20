@@ -46,9 +46,33 @@ public class AdmController {
 	public String a1000() {
 		return "/adm/a1000";
 	}
+	
+	@RequestMapping(value = "/a1000LoginLog", method = RequestMethod.GET)
+	public ModelAndView a1000LoginLog() throws Exception{
+		ModelAndView mv = new ModelAndView("/adm/a1000LoginLog");
+		//로그인기록을 조회합니다.
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		List resultList = dao.getLoginLog();
+		mv.addObject("resultList", resultList);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/a1000OracleSession", method = RequestMethod.GET)
+	public ModelAndView a1000OracleSession() throws Exception{
+		ModelAndView mv = new ModelAndView("/adm/a1000OracleSession");
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		List resultList = dao.getOracleSession();
+		mv.addObject("resultList", resultList);
+		return mv;
+	}	
+
 	@RequestMapping(value = "/a1001", method = RequestMethod.GET)
 	public String a1001() {
 		return "/adm/a1001";
+	}
+	@RequestMapping(value = "/a1002", method = RequestMethod.GET)
+	public String a1002() {
+		return "/adm/a1002"; 
 	}
 	
 	/*
@@ -154,4 +178,5 @@ public class AdmController {
 		mv.addObject("rowNum", rowNum);
 		return mv;
 	}
+	
 }

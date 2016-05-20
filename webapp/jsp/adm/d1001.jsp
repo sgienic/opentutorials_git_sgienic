@@ -142,7 +142,7 @@ function InitD1002Sub(){
 
 	사용자 선택
 	table 선택
-	<div id = "divTabInfo">
+	<div id = "divTabInfo"  style="overflow:auto;width:100% ;height:400px">
 	<span><h2>TableInfo ShowData</h2></span>
 	사용자명 : <c:out value="${userName }"></c:out> | <br/>
 	TableName : <c:out value="${tableName }"></c:out>  <c:out value="${comments }"></c:out> | 
