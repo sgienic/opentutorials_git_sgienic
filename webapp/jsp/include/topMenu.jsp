@@ -22,6 +22,8 @@ if(loginUserId.length()>0) chkAuth=true;
 	<script src="/js/admin.js"></script>
 	<script src="/js/jsrender.js" type="text/javascript"></script>
 	<script src="/js/spin.min.js" type="text/javascript"></script>
+	<link rel="shortcut icon" href="/images/swg_favi.ico">
+	
 	<script>
 	
 	var chkAuth = '<%=chkAuth%>';
@@ -63,11 +65,12 @@ if(loginUserId.length()>0) chkAuth=true;
 <div id="header">
 	<h1><a href="#">Smart Water Grid DB 관리</a></h1>
 	
-	<div id="loginInfo">	
-		<span ><%=loginUserId%> 님께서 로그인하셧습니다.</span>
-		<a href="javascript:logOut();">log out</a>
+	<div id="loginInfo" class="util">
+		<p><span><%=loginUserId%></span>님 환영합니다.</p>
+		<a href="javascript:logOut();">Logout</a>
 	</div>
-	
+		
+
 	   
 	<h2 class="skip">주메뉴</h2>
 	<div class="menu">

@@ -69,5 +69,28 @@
 	   WHERE TYPE = 'USER'
 	ORDER BY logon_time DESC
 	</select>
-	
+	<select id="getOracleLock"  resultType="hashmap" >	
+	SELECT  DO.OBJECT_NAME, DO.OWNER, DO.OBJECT_TYPE as TYPE, DO.OWNER,
+	        VO.XIDUSN, VO.SESSION_ID, VO.LOCKED_MODE,
+	        VO.OS_USER_NAME
+	FROM    V$LOCKED_OBJECT VO, DBA_OBJECTS DO
+	WHERE   VO.OBJECT_ID = DO.OBJECT_ID
+	</select>
+	<select id="getOracleLock02"  resultType="hashmap" >	
+		SELECT   distinct x.session_id,  a.serial#,
+		  d.object_name,  a.machine,  a.terminal,
+		  a.program,  b.address,  b.piece,  b.sql_text
+		FROM  v$locked_object x,  v$session a,  v$sqltext b,  dba_objects d
+		WHERE  x.session_id = a.sid  and
+		  x.object_id = d.object_id  and
+		  a.sql_address = b.address  
+		order by b.address,b.piece
+	</select>
+	<select id="getOracleLock03"  resultType="hashmap" >	
+	SELECT DISTINCT X.SESSION_ID as SESSION_ID , A.SERIAL# As SERIAL, D.OBJECT_NAME, A.MACHINE, A.TERMINAL,
+       A.PROGRAM, A.LOGON_TIME, 'ALTER SYSTEM KILL SESSION'''||A.SID||', '||A.SERIAL#||''';'  AS SQL
+	FROM GV$LOCKED_OBJECT X, GV$SESSION A, DBA_OBJECTS D
+	WHERE  X.SESSION_ID = A.SID AND X.OBJECT_ID = D.OBJECT_ID
+	ORDER BY LOGON_TIME
+	</select>
 </mapper>

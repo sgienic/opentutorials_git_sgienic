@@ -2,27 +2,17 @@ package kr.co.hecorea.adm.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-
-import javax.annotation.Resource;
-import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.hecorea.adm.dao.AdmDAO;
-import kr.co.hecorea.adm.dto.AdmDTO;
-import kr.co.hecorea.adm.service.AdmService;
-import kr.co.hecorea.monitor.dao.MonitorDAO;
 
 
 @Controller
@@ -34,9 +24,23 @@ public class AdmController {
 	
 	private  Logger logger = LoggerFactory.getLogger(AdmController.class);
 	
+	public void create()  throws Exception{
+		logger.info("create() 1 ");
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		logger.info("create() 2");
+	}
+	public static void main(String[] args)  throws Exception{
+		System.out.println("..0");
+		AdmController AdmController = new AdmController();
+		
+		//AdmController.create();
+		AdmController.create();
+
+	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
+		logger.info("/");
 		return "/adm/a1000";
 	}
 	
@@ -52,6 +56,7 @@ public class AdmController {
 		ModelAndView mv = new ModelAndView("/adm/a1000LoginLog");
 		//로그인기록을 조회합니다.
 		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		//AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
 		List resultList = dao.getLoginLog();
 		mv.addObject("resultList", resultList);
 		return mv;
@@ -73,6 +78,32 @@ public class AdmController {
 	@RequestMapping(value = "/a1002", method = RequestMethod.GET)
 	public String a1002() {
 		return "/adm/a1002"; 
+	}
+	
+
+	@RequestMapping(value = "/a1002Sub01", method = RequestMethod.GET)
+	public ModelAndView a1002Sub01()throws Exception {
+		ModelAndView mv = new ModelAndView("/adm/a1002Sub01");
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		List resultList = dao.getOracleLock();
+		mv.addObject("resultList", resultList);
+		return mv;
+	}
+	@RequestMapping(value = "/a1002Sub02", method = RequestMethod.GET)
+	public ModelAndView a1002Sub02()throws Exception {
+		ModelAndView mv = new ModelAndView("/adm/a1002Sub02");
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		List resultList = dao.getOracleLock02();
+		mv.addObject("resultList", resultList);
+		return mv;
+	}
+	@RequestMapping(value = "/a1002Sub03", method = RequestMethod.GET)
+	public ModelAndView a1002Sub03()throws Exception {
+		ModelAndView mv = new ModelAndView("/adm/a1002Sub03");
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		List resultList = dao.getOracleLock03();
+		mv.addObject("resultList", resultList);
+		return mv;
 	}
 	
 	/*

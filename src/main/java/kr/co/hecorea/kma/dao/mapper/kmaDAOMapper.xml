@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.hecorea.kma.dao.AdmDAO">
+	<insert id="insert_kma_fcstgrib" parameterType="hashmap" >
+	INSERT INTO SWG.KMA_FCSTGRIB (
+	   BASEDATE, BASETIME, NX, 
+	   NY, RESULTCODE, RESULTMSG, 
+	   T1H, RN1, SKY, 
+	   REH) 
+	VALUES ( 
+	#{userName},
+	#{userName},
+	#{userName},
+	#{userName},
+	#{userName},
+	#{userName},
+	#{userName},
+	#{userName},
+	#{userName},
+	#{userName});
+	</insert>
+</mapper>

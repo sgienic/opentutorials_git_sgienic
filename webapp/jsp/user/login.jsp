@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/admin.css" />
 
 <script>
 function goLogin(){
@@ -12,15 +13,20 @@ function goLogin(){
 }
 </script>
 </head>
-<body>
-로그인 페이지 입니다. 
 
-<div>
-	<form name="frm" action="proc_login">
-	id:<input type="text" id="user_id" name="user_id" tabindex="1"/> <span>아이디</span><br>
-	pass:<input type="text" id="user_pass" name="user_pass" tabindex="2"/>
-	<span tabindex="3"><a href="javascript:goLogin()">로그인</a></span>
+
+<body id="login">
+	<form name="frm" action="proc_login" method="get">
+	<div class="login">
+		<h1>Smart Water Grid <br />관리자</h1>
+		<div class="">
+			<input class="id" type="text" id="user_id" name="user_id" value="admin" />
+			<input class="pw" type="password" id="user_pass" name="user_pass" value="admin" />
+			<a href="javascript:goLogin()"><img src="/images/login_btn.gif" alt="Login" /></a>
+		</div>
+	</div>
 	</form>
-</div>
 </body>
+
+
 </html>

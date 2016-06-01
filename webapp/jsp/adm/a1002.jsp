@@ -15,9 +15,35 @@ $(document).ready( function() {
 
 
 function InitA1002(){
-
+	a1000Sub01();
+	a1000Sub02();
+	a1000Sub03();
 }
 
+
+function a1000Sub01(){
+    $('subContent01').spin();
+    $.get('a1002Sub01', {}, function(data) {
+        $('#subContent01').html(data);
+        $('#subContent01').spin(false);
+    });	 
+}
+function a1000Sub02(){
+    $('subContent02').spin();
+    $.get('a1002Sub02', {}, function(data) {
+        $('#subContent02').html(data);
+        $('#subContent02').spin(false);
+    });	 
+}
+function a1000Sub03(){
+    $('subContent03').spin();
+    $.get('a1002Sub03', {}, function(data) {
+        $('#subContent03').html(data);
+        $('#subContent03').spin(false);
+    });	 
+}
+
+//참고 : http://pangate.com/647 
 </script> 
 
 
@@ -31,10 +57,11 @@ function InitA1002(){
 	<h2>DB Lock </h2>
 	
 	<h1>DB Lock table 확인</h1>
+	<div id="subContent01"></div>
 	<h1>락발생 사용자와 SQL, OBJECT 조회</h1>
-	<h1>현재 접속자의 SQL 분석</h1>
-	<h1>락 세션 찾기</h1>
-	<h1>락 세션 SQL 로 실행하기</h1>
+	<div id="subContent02"></div>
+	<h1>락 세션 SQL 찾기</h1>
+	<div id="subContent03"></div>
 <!-- //contents -->
 
 <!-- 

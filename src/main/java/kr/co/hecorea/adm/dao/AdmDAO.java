@@ -19,5 +19,17 @@ public interface AdmDAO {
 	public List<HashMap<String,String>> getLoginLog() throws Exception;
 	
 	//오라클 세션정보 
-	public List<HashMap<String,String>> getOracleSession() throws Exception;
+	public List<HashMap<String,String>> getOracleSession() throws Exception;	
+	
+	//오라클 DB 롹 정보 확인
+	public List<HashMap<String,String>> getOracleLock() throws Exception;
+
+	//오라클 Rocl SQL 조회
+	public List<HashMap<String,String>> getOracleLock02() throws Exception;
+	//오라클 Rocl kill SQL 생성
+	public List<HashMap<String,String>> getOracleLock03() throws Exception;
+	
+	
+	
+	
 }

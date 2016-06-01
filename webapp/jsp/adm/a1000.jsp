@@ -69,10 +69,11 @@ function subOracleSession(){
 		</div>
 		<div>
 			<div><h3>오라클 DB 사용공간</h3>
-			<span id="textORCL">00</span>
+			<span id="textORCL">00</span> Gb
 			</div>
 			<div><h3>사용 공간 </h3> 
-			<span id="textUSED">00</span></div>
+			<span id="textUSED">00</span> Gb
+			</div>
 		</div>
 	</div>
 	

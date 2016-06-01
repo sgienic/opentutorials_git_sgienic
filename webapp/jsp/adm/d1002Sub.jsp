@@ -90,9 +90,9 @@ color:#333333;
 
 <%
 try{
-	connectionUrl = "jdbc:oracle:thin:@117.16.244.177:3521/orcl";
-	id="swg";
-	pw="swg_5678";
+	connectionUrl = "jdbc:oracle:thin:@127.0.0.1:1521/XE";
+	id="system";
+	pw="1";
 	con = DriverManager.getConnection(connectionUrl,id,pw); 	
 %>
 
