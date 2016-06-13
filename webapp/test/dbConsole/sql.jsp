@@ -49,7 +49,7 @@ if(!true){ //전달받은 파라미터를 보여줍니다. TEST
 	String jdbcDriver = "";
 	
 	
-	connectionUrl = "jdbc:oracle:thin:@127.0.0.1:1521/XE";
+	connectionUrl = "jdbc:oracle:thin:@121.172.211.31:1521/orcl";
 	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 

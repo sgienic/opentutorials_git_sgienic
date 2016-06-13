@@ -23,7 +23,7 @@
 	    FROM dba_users
 	   WHERE 1 = 1 
 	   and account_status = 'OPEN'
-	    -- AND user_id > 90 
+	     AND user_id > 90 
 	     -- and to_char(created,'yyyymmdd') > 20140101
 	ORDER BY created	
 </select>
@@ -39,7 +39,7 @@
      and b.tablespace_name in (SELECT   default_tablespace
     FROM dba_users
    WHERE 1 = 1 
-     --AND user_id > 90 
+     AND user_id > 90 
      )
 GROUP BY b.tablespace_name, b.file_name, b.bytes
 ORDER BY b.tablespace_name	
@@ -62,7 +62,7 @@ ORDER BY b.tablespace_name
             (SELECT username
                FROM dba_users
               WHERE     1 = 1
-                    --AND user_id > 90
+                    AND user_id > 90
                     and username = #{username}
                     )
 ORDER BY T1.TABLE_NAME
@@ -75,13 +75,13 @@ FROM dba_TABLES t1
 where owner in (SELECT username
     FROM dba_users
    WHERE 1 = 1 
-     --AND user_id > 90 
+     AND user_id > 90 
      AND default_tablespace NOT IN ('USERS'))
    and T1.owner IN
             (SELECT username
                FROM dba_users
               WHERE     1 = 1
-                    --AND user_id > 90
+                    AND user_id > 90
                     and username = #{username}
                     )     
 order by owner
