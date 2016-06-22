@@ -4,7 +4,7 @@
     <div id="snb">
 	<!-- snb -->
 	
-		<h2><span id="subMunuName"></span></h2>
+		<h2><span id="subMunuName">TableInfo</span></h2>
 		<ul>
 			<li id="sub_1"><a href="d1000">TableList</a></li>
 			<li id="sub_2"><a href="d1001">TableInfo</a></li>

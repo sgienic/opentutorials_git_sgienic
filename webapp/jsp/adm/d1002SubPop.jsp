@@ -68,24 +68,12 @@ if(!true){ //전달받은 파라미터를 보여줍니다. TEST
     	out.print("err : " + e);
     }	
 %>
-username : <%=username %>
-<style type="text/css">
-<!--
-.list_sbj {text-align:left; padding:0; margin:0;}
-.t_border { 
-border-bottom:4px solid #E1F3FC;
-border-top:4px solid #E1F3FC;
-border-left:4px solid #E1F3FC;
-border-right:4px solid #E1F3FC
-}
-.list_tahoma {
-font-family:"tahoma";
-font-size:10pt; 
-text-decoration:none; 
-color:#333333; 
-}
--->
-</style>	
+<!-- username : <%=username %> -->
+
+
+	<link rel="stylesheet" href="/css/popup.css" />
+
+
 
 
 <%
@@ -113,7 +101,7 @@ try{
 			int count1 = rsmd.getColumnCount();		
 			int irowct =  Integer.parseInt(rowct);  
 			%>			
-			<table width=800 align=center border=0 cellpadding=2 cellspacing=1 bgcolor=#777777 class="t_border">
+			<table border="1">
 			<%
 			int j =0;
 			while(rs.next()) {

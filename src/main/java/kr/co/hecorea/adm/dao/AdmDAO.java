@@ -29,6 +29,12 @@ public interface AdmDAO {
 	//오라클 Rocl kill SQL 생성
 	public List<HashMap<String,String>> getOracleLock03() throws Exception;
 	
+
+	//오라클Info v$instance
+	public List<HashMap<String,String>> getOracleInfo01() throws Exception;
+	//오라클Info v$database
+	public List<HashMap<String,String>> getOracleInfo02() throws Exception;
+	
 	
 	
 	

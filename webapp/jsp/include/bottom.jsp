@@ -4,7 +4,7 @@
 <!-- //container -->
 <div id="footer">
 	<address></address>
-	<p>copyright</p>
+	<p>SmartWaterGrid</p>
 </div>
 </body>
 </html>

@@ -63,7 +63,7 @@ if(loginUserId.length()>0) chkAuth=true;
 
 <!-- header -->
 <div id="header">
-	<h1><a href="#">Smart Water Grid DB 관리</a></h1>
+	<h1><img src="/images/logo.gif" alt="Smart Water Grid DB 관리" /></h1>
 	
 	<div id="loginInfo" class="util">
 		<p><span><%=loginUserId%></span>님 환영합니다.</p>

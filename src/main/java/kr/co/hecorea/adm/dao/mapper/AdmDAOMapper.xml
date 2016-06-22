@@ -93,4 +93,17 @@
 	WHERE  X.SESSION_ID = A.SID AND X.OBJECT_ID = D.OBJECT_ID
 	ORDER BY LOGON_TIME
 	</select>
+
+	<select id="getOracleInfo01"  resultType="hashmap" >
+	SELECT INSTANCE_NAME,
+	       HOST_NAME,
+	       VERSION,
+	       STARTUP_TIME,
+	       STATUS
+	  FROM V$INSTANCE	
+	</select>
+	<select id="getOracleInfo02"  resultType="hashmap" >
+	SELECT NAME, CREATED, PLATFORM_NAME 
+	  FROM V$DATABASE	
+	</select>
 </mapper>

@@ -102,6 +102,11 @@ function goTableInfo(userName,tableName){
 	frmTableInfo.tableName.value= tableName;
 	frmTableInfo.submit();
 }
+function goPopData(userName,tableName){
+	frmTableInfo.action ="d1001";
+	frmTableInfo.userName.value= userName;
+	frmTableInfo.tableName.value= tableName;	
+}
 </script> 
 
 <script id="userTemplate" type="text/x-jsrender">
@@ -115,6 +120,9 @@ function goTableInfo(userName,tableName){
 	<td class="align_r">{{>NUM_ROWS}}</td>
 	<td class="align_r">{{>MB}}</td>
 	<td>{{>LAST_ANALYZED}}</td>
+	<td onclick="event.cancelBubble = true;">
+	<a href="javascript:goTableInfo('{{>OWNER}}','{{>TABLE_NAME}}')">Columns</a></br>
+	<a href="javascript:goPopData('{{>OWNER}}','{{>TABLE_NAME}}')">Pop</a></td>
 </tr>
 </script>
 
@@ -130,13 +138,14 @@ function goTableInfo(userName,tableName){
 	<hr>
 	
 	<div id="tableInfoDiv">
-		<span id="tableNameLabel"></span>
+		<h4><span id="tableNameLabel"></span></h4>
 		<table>
 		<col width="*" />
 		<col width="*" />
 		<col width="70" />
 		<col width="70" />
 		<col width="120" />
+		<col width="50" />
 		<thead>
 		  <tr>
 		  	<th>TABLE_NAME</th>
@@ -144,6 +153,7 @@ function goTableInfo(userName,tableName){
 		  	<th>ROWS</th>
 		  	<th>MB</th>
 		  	<th>LAST_ANALYZED</th>
+		  	<th>Data</th>
 		  </tr>
 		</thead>
 		<tbody id="tableInfoList"></tbody>

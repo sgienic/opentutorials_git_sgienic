@@ -62,7 +62,7 @@ function subOracleSession(){
 <div id="contents">
 <!-- contents -->
 
-	<div id="oracleInfo">
+	<div id="oracleInfo" style="display:none">
 		<div>
 			<span>최근업데이트</span>
 			<span id="updateTime">0000.00.00 00:00:00</span>
@@ -78,12 +78,12 @@ function subOracleSession(){
 	</div>
 	
 	<div id="loginLog" >
-		<h1>최근 로그인 기록</h1>
+		<h4>최근 로그인 기록</h4>
 		<span id="cotent" ></span>
 	</div>
 	
 	<div id="OracleSession">
-		<h1>세션 정보</h1>
+		<h4>세션 정보</h4>
 		<div id="cotent"></div>
 	</div>
 <!-- //contents -->

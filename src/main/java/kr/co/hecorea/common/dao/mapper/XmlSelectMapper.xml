@@ -6,7 +6,7 @@
 <select id="select_three" parameterType="hashmap" resultType="hashmap">
 	SELECT 774 AS BB from dual where 1=#{param}
 </select>
-   <select id="getOracleInfo" resultType="hashmap" >
+<select id="getOracleInfo" resultType="hashmap" >
 	select
 	 (select RTRIM(TO_CHAR(  sum(bytes)/1024/1024/1024 , 'FM999990D99'), '.') GB from dba_data_files) AS orcl,
 	 (select RTRIM(TO_CHAR(   sum(bytes)/1024/1024/1024, 'FM999990D99'), '.') GB from dba_segments) AS used,

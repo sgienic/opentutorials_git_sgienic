@@ -67,15 +67,22 @@ function selUserChange(userName){
 }
 
 function callbackSelUsergetList(xml){
-	
-	 $("#selTable").find("option").remove();
+	$("#selTable").find("option").remove();
+	var i=0;
 	$(xml).find('record').each(function(index) {
 		var $data = $(this);
 		var opt = new Option();
 		opt.value = $data.find('TABLE_NAME').text();
 		opt.text  = $data.find('TABLE_NAME').text();
 		$('#selTable').append(opt);
+		i ++;
 	})
+	if(i==0){
+		var opt = new Option();
+		opt.value = "";
+		opt.text  = "생성된 테이블이 없습니다.";	
+		$('#selTable').append(opt);
+	}
 	$("#selTable").val(tableName).attr("selected", "selected");
 	
 }
@@ -112,6 +119,14 @@ function InitD1002Sub(){
         $('#divTabInfo').html(data);
     });
 }
+
+function PopupD1002SubPop(){
+	//alert('${userName } : ${tableName }');
+	var popUrl = "d1002SubPop?username=${userName}&tableName=${tableName }";	//팝업창에 출력될 페이지 URL
+	var popOption = "width=800, height=600, resizable=yes, scrollbars=yes, status=no;";    //팝업창 옵션(optoin)
+	var popup =	window.open(popUrl,"data",popOption);
+	popup.focus();
+}
 </script> 
 
 
@@ -124,35 +139,26 @@ function InitD1002Sub(){
 
 <div id="contents">
 <!-- contents -->
-
+<h3>TableInfo</h3> 
 <div id="searchDiv">
 <form >
-	선택된 사용자  4 
+	사용자 선택
     <select id ="selUser" name="selUser" onchange="selUserChange(this.value)">
     	<option>..선택하세요..</option>
     </select>
 
-	선택된 table :
+	Table 선택
     <select id ="selTable" name="selTable" onchange ="goTableInfo()">
     	<option>..선택하세요..</option>
     </select>
+      [<c:out value="${tableName }"></c:out> Data 
+      <a href="javascript:PopupD1002SubPop('${userName }','${tableName }')"> view Popup </a> | 
+      <a href="javascript:goTableData('${userName }','${tableName }')"> View </a>]
 </form>	
 </div>
-
-
-	사용자 선택
-	table 선택
+	
 	<div id = "divTabInfo"  style="overflow:auto;width:100% ;height:400px">
-	<span><h2>TableInfo ShowData</h2></span>
-	사용자명 : <c:out value="${userName }"></c:out> | <br/>
-	TableName : <c:out value="${tableName }"></c:out>  <c:out value="${comments }"></c:out> | 
-	num_rows : <c:out value="${num_rows }"></c:out> | 
-	MB : <c:out value="${mb }"></c:out>Mb   
-	
-	
-	<a href="javascript:goTableData('${userName }','${tableName }')">tableData 보기 . </a>
-	
-	<a href="javascript:InitD1002Sub('${userName }','${tableName }')">tableData 여기서 보기 . </a>
+	<c:out value="${comments }">Table comment 정보가 없습니다.</c:out>
 	<table>
 	<thead>
 	  <tr>

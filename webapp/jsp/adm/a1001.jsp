@@ -31,8 +31,27 @@ function InitA1000(){
 		})
 	},
 	"xml");	
+
+	a1001Sub01();
+	a1001Sub02();
 }
 
+
+
+
+function a1001Sub01(){
+    $('subContent01').spin();
+    $.get('a1001Sub01', {}, function(data) {
+        $('#subContent01').html(data);
+        $('#subContent01').spin(false);
+    });	 
+}function a1001Sub02(){
+    $('subContent02').spin();
+    $.get('a1001Sub02', {}, function(data) {
+        $('#subContent02').html(data);
+        $('#subContent02').spin(false);
+    });	 
+}
 </script> 
 
 
@@ -43,17 +62,34 @@ function InitA1000(){
 
 <div id="contents">
 <!-- contents -->
-	<div>
-		<span>최근업데이트</span>
-		<span id="updateTime">0000.00.00 00:00:00</span>
-	</div>
-	<div>
-		<div><h3>오라클 DB 사용공간</h3>
-		<span id="textORCL">00</span>
-		</div>
-		<div><h3>사용 공간</h3>
-		<span id="textUSED">00</span></div>
-	</div>
+<h3>OracleInfo</h3>
+	
+		<table class="update">
+			<col width="140" />
+			<col width="*" />
+			<col width="100" />
+			<col width="*" />
+			<tbody>
+				<tr>
+					<td class="th">최근업데이트</td>
+					<td colspan="3"><span id="updateTime">0000.00.00 00:00:00</span></td>
+				</tr>
+				<tr>
+					<td class="th">오라클 DB 사용공간</td>
+					<td><span id="textORCL">00</span></td>
+					<td class="th">사용공간</td>
+					<td><span id="textUSED">00</span></td>
+				</tr>
+			</tbody>
+		</table>
+			
+
+	<div id="subContent01"></div>
+	
+
+	<div id="subContent02"></div>
+	
+	
 <!-- //contents -->
 </div>
 

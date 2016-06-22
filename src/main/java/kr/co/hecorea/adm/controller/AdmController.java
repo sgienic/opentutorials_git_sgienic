@@ -81,6 +81,23 @@ public class AdmController {
 	}
 	
 
+	@RequestMapping(value = "/a1001Sub01", method = RequestMethod.GET)
+	public ModelAndView a1001Sub01()throws Exception {
+		ModelAndView mv = new ModelAndView("/adm/a1001Sub01");
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		List resultList = dao.getOracleInfo01();
+		mv.addObject("resultList", resultList);
+		return mv;
+	}	
+	@RequestMapping(value = "/a1001Sub02", method = RequestMethod.GET)
+	public ModelAndView a1001Sub02()throws Exception {
+		ModelAndView mv = new ModelAndView("/adm/a1001Sub02");
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		List resultList = dao.getOracleInfo02();
+		mv.addObject("resultList", resultList);
+		return mv;
+	}
+	
 	@RequestMapping(value = "/a1002Sub01", method = RequestMethod.GET)
 	public ModelAndView a1002Sub01()throws Exception {
 		ModelAndView mv = new ModelAndView("/adm/a1002Sub01");
@@ -210,4 +227,30 @@ public class AdmController {
 		return mv;
 	}
 	
+	
+	@RequestMapping(value = "/d1002SubPop", method = RequestMethod.GET)
+	public ModelAndView d1002SubPopbyGet(String tableName,String userName,String rowNum) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		
+		System.out.println(" params  : " + params);
+		
+		ModelAndView mv = new ModelAndView("/adm/d1002SubPop");
+		mv.addObject("tableName", tableName);
+		mv.addObject("userName", userName);
+		mv.addObject("rowNum", rowNum);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/d1002SubPop", method = RequestMethod.POST)
+	public ModelAndView d1002SubPopbyPost(String tableName,String userName,String rowNum) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		
+		System.out.println(" params  : " + params);
+		
+		ModelAndView mv = new ModelAndView("/adm/d1002SubPop");
+		mv.addObject("tableName", tableName);
+		mv.addObject("userName", userName);
+		mv.addObject("rowNum", rowNum);
+		return mv;
+	}	
 }

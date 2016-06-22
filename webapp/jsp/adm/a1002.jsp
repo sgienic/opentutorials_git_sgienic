@@ -54,13 +54,13 @@ function a1000Sub03(){
 
 <div id="contents">
 <!-- contents -->
-	<h2>DB Lock </h2>
+	<h3>DB Lock </h3>
 	
-	<h1>DB Lock table 확인</h1>
+	<h4>DB Lock table 확인</h4>
 	<div id="subContent01"></div>
-	<h1>락발생 사용자와 SQL, OBJECT 조회</h1>
+	<h4>락발생 사용자와 SQL, OBJECT 조회</h4>
 	<div id="subContent02"></div>
-	<h1>락 세션 SQL 찾기</h1>
+	<h4>락 세션 SQL 찾기</h4>
 	<div id="subContent03"></div>
 <!-- //contents -->
 
