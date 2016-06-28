@@ -3,6 +3,9 @@ package kr.co.hecorea.adm.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.hecorea.adm.dao.AdmDAO;
+import kr.co.hecorea.common.util.ParameterUtil;
 
 
 @Controller
@@ -254,4 +258,28 @@ public class AdmController {
 		mv.addObject("rowNum", rowNum);
 		return mv;
 	}	
+	
+
+	@RequestMapping(value = "/d1003", method = RequestMethod.GET)
+	public String d1003() {
+		return "/adm/d1003";
+	}
+	
+	//Table Comment 조회
+	@RequestMapping(value = "/d1003SubSearch", method = RequestMethod.GET)
+	public ModelAndView d1003SubSearch(HttpServletRequest req,HttpServletResponse rep) throws Exception {
+		HashMap<String, String> params = ParameterUtil.getRequestMap(req);
+		System.out.println(" params  : " + params);
+		
+		ModelAndView mv = new ModelAndView("/adm/d1003SubSearch");
+		AdmDAO dao = sqlSession.getMapper(AdmDAO.class);
+		List resultList = dao.getTablebyComments(params);
+		
+		mv.addObject("resultList", resultList);
+		return mv;
+	}
+	
+	
+	
+	
 }

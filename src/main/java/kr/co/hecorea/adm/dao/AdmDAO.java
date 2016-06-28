@@ -36,6 +36,9 @@ public interface AdmDAO {
 	public List<HashMap<String,String>> getOracleInfo02() throws Exception;
 	
 	
+	//DB comment 조회
+	public List<HashMap<String,String>> getTablebyComments(HashMap<String, String> params) throws Exception;
+	
 	
 	
 }

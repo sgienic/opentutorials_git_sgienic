@@ -106,4 +106,29 @@
 	SELECT NAME, CREATED, PLATFORM_NAME 
 	  FROM V$DATABASE	
 	</select>
+	
+
+	<select id="getTablebyComments"  resultType="hashmap" >
+	 SELECT ROWNUM,T1.OWNER,
+	         T1.TABLE_NAME,
+	         T2.COMMENTS,
+	         T1.TABLESPACE_NAME,
+	         T1.NUM_ROWS,
+	         T1.AVG_ROW_LEN,
+	         RTRIM (TO_CHAR (T1.INITIAL_EXTENT / 1024 / 1204, 'FM999990D99'), '.')
+	            AS MB,
+	            T1.LAST_ANALYZED
+	    FROM dba_TABLES T1 , dba_TAB_COMMENTS T2
+	   WHERE 1=1
+	   and  T1.TABLE_NAME = T2.TABLE_NAME 
+	   and  T1.OWNER = T2.OWNER 
+	   and T1.owner IN
+	            (SELECT username
+	               FROM dba_users
+	              WHERE     1 = 1
+	                    )
+	    AND T2.COMMENTS like  '%' || #{COMMENTS} || '%'           
+	ORDER BY T1.TABLE_NAME
+	</select>	
+	
 </mapper>
