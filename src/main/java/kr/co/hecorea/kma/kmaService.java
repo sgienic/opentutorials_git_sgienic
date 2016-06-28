@@ -5,11 +5,10 @@ import java.util.HashMap;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.ContextConfiguration;
 
 import kr.co.hecorea.adm.dao.AdmDAO;
 
-@ContextConfiguration(locations = { "classpath*:config/*-context.xml" })
+
 public class kmaService {
 	@Autowired
 	private SqlSession sqlSession;

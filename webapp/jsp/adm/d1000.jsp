@@ -18,7 +18,7 @@ function InitD1000_1(){
 
 	$('#tableInfoDiv').spin();
 	// 사용자 정보 select
-	$.get("/xml/simpleSelect.do", {
+	$.get("/swg/xml/simpleSelect.do", {
 		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getOracleUser"
 	},
 	callback
@@ -51,7 +51,7 @@ function CreateTableInfo(username){
 	$('#tableInfoDiv').show();
 	jArray1 = new Array();
 	// 사용자 정보 select
-	$.get("/xml/simpleSelect.do", {
+	$.get("/swg/xml/simpleSelect.do", {
 		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getTableInfoByUser",
 		"username":username
 	},

@@ -16,7 +16,7 @@ $(document).ready( function() {
 
 function InitA1000(){
 	// /xml/simpleSelect.do?selectId=kr.co.hecorea.monitor.dao.Monitor.getOracleInfo
-	$.get("/xml/simpleSelect.do", {
+	$.get("/swg/xml/simpleSelect.do", {
 		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getOracleInfo"
 	},
 	function(xml){

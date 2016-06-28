@@ -20,7 +20,7 @@ a:hover, a:active, a:focus{color:#333; text-decoration:underline;}
 .skip, legend, caption{position:absolute; left:-5000px; width:0; height:0; font-size:0; line-height:0; overflow:hidden;}
 caption{position:static;}
 /* globalLayout */
-body{background: url(../images/bg.gif) repeat-x;}
+body{background: url(/swg/images/bg.gif) repeat-x;}
 #container, #footer{width:1024px; margin:0 auto;}
 table{width:100%}
 /* header */
@@ -71,13 +71,13 @@ table{width:100%}
 #contents table.update td.th{border-right: 1px solid #cee5b5; border-left: 1px solid #cee5b5; background-color: #f5f9f1}
 .userList{}
 .userList span{}
-.userList span a{display:inline-block; padding:2px 12px 8px 16px; background: url(../images/ico_key.png) 0 3px no-repeat}
+.userList span a{display:inline-block; padding:2px 12px 8px 16px; background: url(/swg/images/ico_key.png) 0 3px no-repeat}
 .userList span.on a{color:#005EC6; font-weight:bold;}
 /* login */
-#login{background:#f0f2f4 url(../images/login_bg.gif) repeat-x;}
+#login{background:#f0f2f4 url(/swg/images/login_bg.gif) repeat-x;}
 #login .login{width: 426px; margin: 0 auto;padding-top: 200px;}
 #login .login h1{height: 92px;padding-left: 10px;color: #607385;font-size: 24px;}
-#login .login div{position: relative; width: 426px; height: 258px;background: url(../images/login.gif) no-repeat;}
+#login .login div{position: relative; width: 426px; height: 258px;background: url(/swg/images/login.gif) no-repeat;}
 #login .login div input{position: absolute; left: 26px; width: 363px; height: 30px; padding-left: 10px;line-height: 30px;border: none;background: none;}
 #login .login div input.id{top: 50px;}
 #login .login div input.pw{top: 130px;}

@@ -26,7 +26,7 @@ function Init(){
 
 
 function InitA1000Sample(){
-	$.get("/xml/simpleSelect.do?", {
+	$.get("/swg/xml/simpleSelect.do?", {
 		"selectId":"kr.co.hecorea.monitor.dao.Monitor.select_day"
 	},
 	function(xml){

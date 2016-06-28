@@ -17,7 +17,7 @@ function InitC1000(){
 
 	$('#contents').spin();
 	// /xml/simpleSelect.do?selectId=kr.co.hecorea.common.dao.XmlSelectDao.getOracleUser
-	$.get("/xml/simpleSelect.do", {
+	$.get("/swg/xml/simpleSelect.do", {
 		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getDataFile"
 	},
 	function(xml){

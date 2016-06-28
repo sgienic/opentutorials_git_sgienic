@@ -14,7 +14,7 @@ chkAuth = false;
 if(loginUserId.length()>0) chkAuth=true;
 
 if(!chkAuth){
-	out.println("<script>alert('"+authMsg+"'); location.href='/swg/login'</script>");
+	out.println("<script>alert('"+authMsg+"'); location.href='/swg/common/login'</script>");
 	out.println("<meta http-equiv=refresh content='0;url=/'>"); 
 	out.flush();
 	if(true) return;

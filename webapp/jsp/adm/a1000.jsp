@@ -20,7 +20,7 @@ function InitA1000(){
 }
 
 function subOracleInfo(){
-	$.get("/xml/simpleSelect.do", {
+	$.get("/swg/xml/simpleSelect.do", {
 		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getOracleInfo"
 	},
 	function(xml){

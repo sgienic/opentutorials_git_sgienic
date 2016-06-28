@@ -30,7 +30,7 @@ $(document).ready( function() {
 //사용자 정보 select box option 추가
 function InitD1001(){
 	// 사용자 정보 select
-	$.get("/xml/simpleSelect.do", {
+	$.get("/swg/xml/simpleSelect.do", {
 		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getOracleUser"
 	},
 	callback
@@ -58,7 +58,7 @@ function callback(xml){
 function selUserChange(userName){
 	
 	// 사용자 정보 select
-	$.get("/xml/simpleSelect.do", {
+	$.get("/swg/xml/simpleSelect.do", {
 		"username":userName,
 		"selectId":"kr.co.hecorea.common.dao.XmlSelectDao.getTableInfoByUser"
 	},

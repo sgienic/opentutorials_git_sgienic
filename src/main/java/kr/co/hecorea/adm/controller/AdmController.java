@@ -16,7 +16,8 @@ import kr.co.hecorea.adm.dao.AdmDAO;
 
 
 @Controller
-@RequestMapping("swg/adm/*")
+//@RequestMapping("swg/adm/*")
+@RequestMapping("adm/*")
 public class AdmController {
 	
 	@Autowired

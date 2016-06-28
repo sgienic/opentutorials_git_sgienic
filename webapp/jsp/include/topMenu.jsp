@@ -16,13 +16,13 @@ if(loginUserId.length()>0) chkAuth=true;
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>SWG</title>
-	<link rel="stylesheet" href="/css/admin.css" />
+	<link rel="stylesheet" href="/swg/css/admin.css" />
 	
 	<script src="http://code.jquery.com/jquery-1.11.2.js" type="text/javascript"></script>
-	<script src="/js/admin.js"></script>
-	<script src="/js/jsrender.js" type="text/javascript"></script>
-	<script src="/js/spin.min.js" type="text/javascript"></script>
-	<link rel="shortcut icon" href="/images/swg_favi.ico">
+	<script src="/swg/js/admin.js"></script>
+	<script src="/swg/js/jsrender.js" type="text/javascript"></script>
+	<script src="/swg/js/spin.min.js" type="text/javascript"></script>
+	<link rel="shortcut icon" href="/swg/images/swg_favi.ico">
 	
 	<script>
 	
@@ -54,7 +54,7 @@ if(loginUserId.length()>0) chkAuth=true;
 		};	
 		
 	function logOut(){
-		location.href='/swg/logOut'
+		location.href='/swg/common/logOut'
 	}		
 	</script>
 
@@ -63,7 +63,7 @@ if(loginUserId.length()>0) chkAuth=true;
 
 <!-- header -->
 <div id="header">
-	<h1><img src="/images/logo.gif" alt="Smart Water Grid DB 관리" /></h1>
+	<h1><img src="/swg/images/logo.gif" alt="Smart Water Grid DB 관리" /></h1>
 	
 	<div id="loginInfo" class="util">
 		<p><span><%=loginUserId%></span>님 환영합니다.</p>

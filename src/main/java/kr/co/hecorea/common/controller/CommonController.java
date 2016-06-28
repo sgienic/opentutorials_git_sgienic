@@ -20,7 +20,8 @@ import kr.co.hecorea.common.util.ParameterUtil;
 
 
 @Controller
-@RequestMapping("swg/*")
+//@RequestMapping("swg/*")
+@RequestMapping("common/*")
 public class CommonController {
 	
 	@Autowired
@@ -64,7 +65,7 @@ public class CommonController {
 				params.put("user_log_ip_addr", req.getRemoteAddr());
 				userDAO.insert_contact_log(params); //접속로그 입력
 
-				return "redirect:/swg/adm/";
+				return "redirect:/adm/";
 			} 
 			
 		}catch(Exception e) {

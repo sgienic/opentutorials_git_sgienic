@@ -10,7 +10,8 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy" />
 		<!-- property name="url" value="jdbc:log4jdbc:oracle:thin:@117.16.244.177:3521:orcl" /> -->
-		<property name="url" value="jdbc:log4jdbc:oracle:thin:@121.172.211.31:1521:orcl" />
+		<!--  property name="url" value="jdbc:log4jdbc:oracle:thin:@121.172.211.31:1521:orcl" /> -->
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:XE" />
 		<property name="username" value="swg" />
 		<property name="password" value="swg_5678" />
 	</bean>	 		

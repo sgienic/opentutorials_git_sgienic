@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/css/admin.css" />
+<link rel="stylesheet" href="/swg/css/admin.css" />
 
 <script>
 function goLogin(){
@@ -22,7 +22,7 @@ function goLogin(){
 		<div class="">
 			<input class="id" type="text" id="user_id" name="user_id" value="admin" />
 			<input class="pw" type="password" id="user_pass" name="user_pass" value="admin" />
-			<a href="javascript:goLogin()"><img src="/images/login_btn.gif" alt="Login" /></a>
+			<a href="javascript:goLogin()"><img src="/swg/images/login_btn.gif" alt="Login" /></a>
 		</div>
 	</div>
 	</form>
