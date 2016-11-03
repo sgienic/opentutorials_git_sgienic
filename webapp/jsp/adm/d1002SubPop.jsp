@@ -79,7 +79,7 @@ if(!true){ //전달받은 파라미터를 보여줍니다. TEST
 <%
 try{
 	//connectionUrl = "jdbc:oracle:thin:@121.172.211.31:1521/orcl";
-	connectionUrl = "jdbc:oracle:thin:@127.0.0.1:1521/XE";
+	connectionUrl = "jdbc:oracle:thin:@192.168.0.2:3521:orcl";
 	id="swg";
 	pw="swg_5678";
 	con = DriverManager.getConnection(connectionUrl,id,pw); 	

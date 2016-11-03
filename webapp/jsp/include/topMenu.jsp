@@ -79,6 +79,7 @@ if(loginUserId.length()>0) chkAuth=true;
 			<li id="b"><a href="b1000">사용자정보</a></li>
 			<li id="c"><a href="c1000">TableSpace</a></li>
 			<li id="d"><a href="d1000">TableInfo</a></li>
+			<li id="e"><a href="e1000">BackOffice</a></li>
 		</ul>
 	</div>
 </div>

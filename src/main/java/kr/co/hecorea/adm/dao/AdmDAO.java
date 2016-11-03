@@ -39,6 +39,22 @@ public interface AdmDAO {
 	//DB comment 조회
 	public List<HashMap<String,String>> getTablebyComments(HashMap<String, String> params) throws Exception;
 	
+	//백오피스,레오텍, 수용가 마스터 
+	public List<HashMap<String,String>> getE3101_1() throws Exception;	
+	public List<HashMap<String,String>> getE3102_1(HashMap<String, String> params) throws Exception;	
+	public List<HashMap<String,String>> getE3103_1() throws Exception;
+	public List<HashMap<String,String>> getE3104_1(HashMap<String, String> params) throws Exception;	
+	public List<HashMap<String,String>> getE3105_1(HashMap<String, String> params) throws Exception;	
+	
+	//2-1 세부 지하수 실시간
+	public List<HashMap<String,String>> e2101Sub01(HashMap<String, String> params) throws Exception;
+	
+	//헥코리아 기상처 open api 동네예보 중기 예보
+	public List<HashMap<String,String>> e2301Sub01(HashMap<String, String> params) throws Exception;	
+	public List<HashMap<String,String>> e2301Sub02(HashMap<String, String> params) throws Exception;	
+	
+	
+	
 	
 	
 }

@@ -67,6 +67,7 @@
 	         service_name,sysdate
 	    FROM v$session
 	   WHERE TYPE = 'USER'
+	   and status ='ACTIVE'
 	ORDER BY logon_time DESC
 	</select>
 	<select id="getOracleLock"  resultType="hashmap" >	
@@ -130,5 +131,125 @@
 	    AND T2.COMMENTS like  '%' || #{COMMENTS} || '%'           
 	ORDER BY T1.TABLE_NAME
 	</select>	
+	
+	<select id="getE3101_1"  resultType="hashmap" >
+	SELECT 
+	CUST_ID, CUST_TP_ID, MTR_READ_TP_CD, 
+	   CUST_MNGM_ID, CUST_NM, CUST_PHN, 
+	   CUST_ADDR, CUST_STR_ADDR, LOC_RMK, 
+	   TAX_CUST_ID, GIS_CUST_ID, GIS_CRDN_X, 
+	   GIS_CRDN_Y, RMK, UPD_DT, 
+	   UPD_USR_ID, DVC_MTR_ID
+	FROM LEOTEK.CUST_MT
+	order by cust_id
+	</select>	
+	<select id="getE3102_1"  parameterType="hashmap" resultType="hashmap" >	
+	SELECT PLT_ID,
+	       BLK_ID,
+	       DVC_MTR_ID,
+	       WRK_DT,
+	       ITGF_S,
+	       ITGF_E,
+	       MTR_SPL,
+	       BASE_ITGF_S,
+	       BASE_ITGF_E,
+	       BASE_MTR_SPL,
+	       UPD_DT,
+	       UPD_USR_ID,
+	       (select count(rownum) FROM LEOTEK.MTR_40HT_DAY where  WRK_DT = #{workdt} ) CNT
+	  FROM LEOTEK.MTR_40HT_DAY
+	 WHERE 1 = 1
+	 AND  WRK_DT = #{workdt}
+	</select>	
+	<select id="getE3103_1"  parameterType="hashmap" resultType="hashmap" >	
+	SELECT 
+	DVC_MTR_ID, PLT_ID, BLK_ID, 
+	   DVC_MTR_TP_CD, DVC_MTR_MDL_ID, CMC_TP_CD, 
+	   RUN_STATE_CD, IST_VND_ID, DVC_MTR_NM, 
+	   DVC_MTR_SRNO, IST_DT, IST_ADDR, 
+	   LOC_RMK, GIS_DVC_MTR_ID, GIS_CRDN_X, 
+	   GIS_CRDN_Y, INFO_PNL1_CRND_X, INFO_PNL1_CRND_Y, 
+	   INFO_PNL2_CRND_X, INFO_PNL2_CRND_Y, ASL, 
+	   DRT, SLP, RMK, 
+	   UPD_DT, UPD_USR_ID,
+	       (select count(rownum) FROM LEOTEK.DVC_MTR_MT  ) CNT
+	FROM LEOTEK.DVC_MTR_MT
+	order by DVC_MTR_ID	
+	</select>
+	
+	<select id="getE3104_1"  parameterType="hashmap" resultType="hashmap" >	
+	SELECT 
+	PLT_ID, BLK_ID, DVC_MTR_ID, 
+	   WRK_DT, ITGF_S, ITGF_E, 
+	   MTR_SPL, DN_MTR_SPL, SPL, 
+	   ITGF_RVS, ITGF_FRNT, MNTF, 
+	   MNTF_MX, MNTF_AVG, MNTF_MN, 
+	   WAPR, WAPR_MX, WAPR_AVG, 
+	   WAPR_MN, VLT, VLT_MX, 
+	   VLT_AVG, VLT_MN, BASE_ITGF_S, 
+	   BASE_ITGF_E, BASE_MTR_SPL, BASE_DN_MTR_SPL, 
+	   BASE_SPL, BASE_ITGF_RVS, BASE_ITGF_FRNT, 
+	   BASE_MNTF, BASE_MNTF_MX, BASE_MNTF_AVG, 
+	   BASE_MNTF_MN, BASE_WAPR, BASE_WAPR_MX, 
+	   BASE_WAPR_AVG, BASE_WAPR_MN, BASE_VLT, 
+	   BASE_VLT_MX, BASE_VLT_AVG, BASE_VLT_MN, 
+	   DN_BLK_CNT, UPD_DT, UPD_USR_ID
+	FROM LEOTEK.MTR_10HT_DAY
+	where wrk_dt = #{workdt}	
+	</select>
+	
+
+	<select id="getE3105_1"  parameterType="hashmap" resultType="hashmap" >	
+	SELECT 
+	PLT_ID, BLK_ID, DVC_MTR_ID, 
+	   WRK_DT, WAPR, WAPR_MX, 
+	   WAPR_AVG, WAPR_MN, BASE_WAPR, 
+	   BASE_WAPR_MX, BASE_WAPR_AVG, BASE_WAPR_MN, 
+	   UPD_DT, UPD_USR_ID,
+	       (select count(rownum) FROM LEOTEK.MTR_20HT_DAY where wrk_dt = #{workdt} ) CNT
+	FROM LEOTEK.MTR_20HT_DAY
+	where wrk_dt = #{workdt}
+	</select>	
+	
+	<select id="e2101Sub01"  parameterType="hashmap" resultType="hashmap" >
+	  SELECT DT,
+	         GWID,
+	         LVL,
+	         PWR,
+	         (SELECT COUNT (dt)
+	            FROM ICUH.UNGWREAL
+	           WHERE TO_CHAR (dt, 'yyyymmdd') = #{workdt}	)
+	            CNT
+	    FROM ICUH.UNGWREAL
+	   WHERE 1 = 1 AND TO_CHAR (dt, 'yyyymmdd') = #{workdt}	
+	ORDER BY dt DESC
+	</select>
+	
+	<select id="e2301Sub01"  parameterType="hashmap" resultType="hashmap" >	
+	SELECT 
+	BASEDATE, BASETIME, NX, 
+	   NY, FCSTTIME, FCSTDATE, 
+	   CATEGORY, RESULTCODE, RESULTMSG, 
+	   FCSTVALUE
+	FROM SWG.KMA_FCSTSPACEDATA
+	where basedate  = #{workdt}	
+	ORDER BY BASETIME DESC
+	</select>
+	
+	<select id="e2301Sub02"  parameterType="hashmap" resultType="hashmap" >	
+	SELECT 
+	RESULTCODE, RESULTMSG, REGID, 
+	   TMFC, WF3AM, WF3PM, 
+	   WF4AM, WF4PM, WF5AM, 
+	   WF5PM, WF6AM, WF6PM, 
+	   WF7AM, WF7PM, WF8, 
+	   WF9, WF10
+	FROM SWG.KMA_MIDLANDWEATHER
+	where substr(TMFC,1,8) = #{workdt}	
+	</select>
+	
+	
+	
+
 	
 </mapper>

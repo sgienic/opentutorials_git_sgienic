@@ -151,9 +151,12 @@ function PopupD1002SubPop(){
     <select id ="selTable" name="selTable" onchange ="goTableInfo()">
     	<option>..선택하세요..</option>
     </select>
+      <!-- 
       [<c:out value="${tableName }"></c:out> Data 
+    
       <a href="javascript:PopupD1002SubPop('${userName }','${tableName }')"> view Popup </a> | 
       <a href="javascript:goTableData('${userName }','${tableName }')"> View </a>]
+       -->
 </form>	
 </div>
 	

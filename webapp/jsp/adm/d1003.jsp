@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"    %>
+    pageEncoding="UTF-8" %>
 <jsp:include page="/jsp/include/top.jsp" />
 <jsp:include page="/jsp/include/topMenu.jsp" />
 
@@ -36,10 +36,11 @@ function subLoginLog(){
 <div id="contents">
 <!-- contents -->
 	<h3>TableSerarch</h3> 
-	<div id="searchDiv">
-	<form >   
+	<div id="searchDiv" class="search">
+	<form >
 		comment : <input type="text" id="inputTableName" name="inputTableName" onkeydown="javascript: if (event.keyCode == 13) {subLoginLog();   return false; }" >
-		<a href="javascript:subLoginLog()">검색</a>
+		<a href="javascript:subLoginLog()">
+		<button>Search</button></a>
 	</form>	
 	</div>	
 	

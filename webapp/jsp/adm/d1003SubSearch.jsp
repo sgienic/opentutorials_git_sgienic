@@ -5,11 +5,11 @@
 <table>
 <thead>
 	<tr>
-		<th>COLUMN_NAME</th>
+		<th>TABLE_NAME</th>
 		<th>COMMENTS</th>
-		<th>DATATYPE</th>
-		<th>NULLABLE</th>
-		<th>PK</th>
+		<th>ROWS</th>
+		<th>MB</th>
+		<th>LAST_ANALYZED</th>
 	</tr>
 </thead>	
 <tbody>
